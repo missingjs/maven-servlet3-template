@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 public class ServletWithAnnotations extends HttpServlet {
 	private static final long serialVersionUID = -3462096228274971485L;
 	@Override
-	protected void doGet(HttpServletRequest reqest, HttpServletResponse response) 
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		response.getWriter().println("Excited!");
+		String ip = request.getRemoteAddr();
+		String message = String.format("The real fans from %s? Excited!", ip);
+		response.getWriter().println(message);
 	}
 }
